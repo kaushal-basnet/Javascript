@@ -17,6 +17,15 @@ console.log(colombia, nepal, germany); */
 3. Call 'percentageOfWorld1' for 3 populations of countries of your choice, store the results into variables, and log them to the console
 4. Create a function expression which does the exact same thing, called 'percentageOfWorld2', and also call it with 3 country populations (can be the same populations) 
 
+//Tips:
+/*btn.AddEventListener(‘click’, helloWorld, false)
+Confused why we did not call our function with parenthesis. The reason is, if we call our function with parenthesis, JavaScript will execute the function then and there, but we need to call the function on button click. So for this we need to pass the function definition. 
+So btn.AddEventListener(‘click’, helloWorld, false) is a correct way of implementation.
+btn.AddEventListner(‘click’, helloWorld(), false) // wrong
+
+We may also implement the above scenario like:
+btn.AddEventListner(‘click’, ()=>helloWorld(), false) // correct
+*/ /*
 //function declaration
 const worldPopulation = 7900;
 function percentageOfWorld1(country, population) {
