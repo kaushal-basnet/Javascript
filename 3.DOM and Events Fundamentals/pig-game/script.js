@@ -12,24 +12,34 @@ const player1El = document.querySelector(".player--1");
 const score0El = document.querySelector("#score--0");
 const score1El = document.getElementById("score--1"); //Alternative way
 const diceEl = document.querySelector(".dice");
-const current1El = document.getElementById("current--0");
-const current2El = document.getElementById("current--1");
+const current0El = document.getElementById("current--0");
+const current1El = document.getElementById("current--1");
 //buttons
 const btnNew = document.querySelector(".btn--new"); //reset game
 const btnRoll = document.querySelector(".btn--roll"); //dice roll
 const btnHold = document.querySelector(".btn--hold"); //dice hold
 
-//setup initial score for both player
-score0El.textContent = 0;
-score1El.textContent = 0;
+let scores, currentScore, activePlayer;
+//initiallizing values
+const init = function () {
+  scores = [0, 0];
+  currentScore = 0;
+  activePlayer = 0;
+  //setup initial score for both player
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  current0El.textContent = 0;
+  current1El.textContent = 0;
 
-//intial dice hide
-diceEl.classList.add("hidden");
-
-const scores = [0, 0];
-let currentScore = 0;
-let activePlayer = 0;
-
+  diceEl.classList.add("hidden"); //intial dice hide
+  btnRoll.disabled = false;
+  btnHold.disabled = false;
+  player0El.classList.remove("player--winner");
+  player1El.classList.remove("player--winner");
+  player0El.classList.add("player--active");
+  player1El.classList.remove("player--active");
+};
+init();
 //switching the player
 const switchPlayer = function () {
   document.getElementById(`current--${activePlayer}`).textContent = 0; // if dice is 1 then score will be 0
@@ -80,3 +90,5 @@ btnHold.addEventListener("click", function () {
     switchPlayer(); //switching player
   }
 });
+
+btnNew.addEventListener("click", init);
